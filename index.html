@@ -29,6 +29,9 @@
                     <a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> 联系我</a>
                 </li>
             </ul>
+            <button class="theme-toggle" id="themeToggle" title="切换主题">
+                <i class="fas fa-moon"></i>
+            </button>
             <div class="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -142,7 +145,6 @@
 
                     <!-- 文章卡片4 -->
                     <article class="post-card" data-category="学习">
-                        <div class="post-badge new">新</div>
                         <div class="post-image">
                             <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=400&fit=crop" alt="RTOS开发" loading="lazy">
                             <div class="post-overlay"></div>
@@ -161,6 +163,78 @@
                                 <span class="mini-tag">多任务</span>
                             </div>
                             <a href="post4.html" class="read-more">阅读更多 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- 文章卡片5 - 教程 -->
+                    <article class="post-card" data-category="教程">
+                        <div class="post-badge new">新</div>
+                        <div class="post-image">
+                            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=400&fit=crop" alt="STM32教程" loading="lazy">
+                            <div class="post-overlay"></div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-date"><i class="far fa-calendar"></i> 2024年1月20日</span>
+                                <span class="post-read-time"><i class="far fa-clock"></i> 15分钟</span>
+                            </div>
+                            <span class="post-category tech">教程</span>
+                            <h3>STM32开发入门教程：从零开始学习ARM微控制器</h3>
+                            <p>完整的STM32入门教程，从基础概念、开发环境搭建，到GPIO编程、UART通信，是初学者的最佳选择...</p>
+                            <div class="post-tags">
+                                <span class="mini-tag">STM32</span>
+                                <span class="mini-tag">教程</span>
+                                <span class="mini-tag">ARM</span>
+                            </div>
+                            <a href="post5.html" class="read-more">阅读更多 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- 文章卡片6 - 教程 -->
+                    <article class="post-card" data-category="教程">
+                        <div class="post-badge new">新</div>
+                        <div class="post-image">
+                            <img src="https://images.unsplash.com/photo-1633356350959-b9bc57a3a9a9?w=800&h=400&fit=crop" alt="Linux教程" loading="lazy">
+                            <div class="post-overlay"></div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-date"><i class="far fa-calendar"></i> 2024年1月22日</span>
+                                <span class="post-read-time"><i class="far fa-clock"></i> 18分钟</span>
+                            </div>
+                            <span class="post-category life">教程</span>
+                            <h3>嵌入式Linux开发指南：ARM平台上的Linux系统开发</h3>
+                            <p>深入讲解嵌入式Linux开发，包括bootloader、内核编译、驱动开发和应用层编程，适合进阶开发者...</p>
+                            <div class="post-tags">
+                                <span class="mini-tag">Linux</span>
+                                <span class="mini-tag">教程</span>
+                                <span class="mini-tag">驱动</span>
+                            </div>
+                            <a href="post6.html" class="read-more">阅读更多 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <!-- 文章卡片7 - 教程 -->
+                    <article class="post-card" data-category="教程">
+                        <div class="post-badge new">新</div>
+                        <div class="post-image">
+                            <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=400&fit=crop" alt="PCB设计" loading="lazy">
+                            <div class="post-overlay"></div>
+                        </div>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="post-date"><i class="far fa-calendar"></i> 2024年1月24日</span>
+                                <span class="post-read-time"><i class="far fa-clock"></i> 20分钟</span>
+                            </div>
+                            <span class="post-category career">教程</span>
+                            <h3>PCB设计与硬件调试实战教程：从原理图到成品</h3>
+                            <p>系统介绍PCB设计全流程，包括原理图、布局布线、EMI控制、硬件调试等实战技巧...</p>
+                            <div class="post-tags">
+                                <span class="mini-tag">PCB</span>
+                                <span class="mini-tag">教程</span>
+                                <span class="mini-tag">硬件</span>
+                            </div>
+                            <a href="post7.html" class="read-more">阅读更多 <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </article>
                 </div>
@@ -213,6 +287,10 @@
                         <span class="tag" data-filter="I2C">I2C</span>
                         <span class="tag" data-filter="SPI">SPI</span>
                         <span class="tag" data-filter="职场心得">职场心得</span>
+                        <span class="tag" data-filter="教程">教程</span>
+                        <span class="tag" data-filter="Linux">Linux</span>
+                        <span class="tag" data-filter="PCB">PCB</span>
+                        <span class="tag" data-filter="硬件">硬件</span>
                     </div>
                 </div>
 
