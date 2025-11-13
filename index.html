@@ -8,21 +8,25 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+    <!-- 滚动进度条 -->
+    <div class="scroll-progress"></div>
+
     <!-- 导航栏 -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
+                <i class="fas fa-feather-alt"></i>
                 <h2>我的博客</h2>
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
-                    <a href="#home" class="nav-link">首页</a>
+                    <a href="#home" class="nav-link"><i class="fas fa-home"></i> 首页</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#about" class="nav-link">关于我</a>
+                    <a href="#about" class="nav-link"><i class="fas fa-user"></i> 关于我</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#contact" class="nav-link">联系我</a>
+                    <a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> 联系我</a>
                 </li>
             </ul>
             <div class="hamburger">
@@ -35,10 +39,25 @@
 
     <!-- 英雄区域 -->
     <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="gradient-bg"></div>
+            <div class="particles"></div>
+        </div>
         <div class="hero-content">
+            <div class="hero-badge">欢迎访问</div>
             <h1>欢迎来到我的个人博客</h1>
             <p>分享技术、生活与思考</p>
-            <button class="cta-button">开始阅读</button>
+            <div class="hero-buttons">
+                <button class="cta-button primary">
+                    <i class="fas fa-book-reader"></i> 开始阅读
+                </button>
+                <button class="cta-button secondary">
+                    <i class="fas fa-user-circle"></i> 关于我
+                </button>
+            </div>
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
+            </div>
         </div>
     </section>
 
@@ -47,68 +66,98 @@
         <div class="container">
             <!-- 博客文章列表 -->
             <section class="blog-posts">
-                <h2>最新文章</h2>
+                <div class="section-header">
+                    <h2>最新文章</h2>
+                    <p class="section-subtitle">探索技术与生活的美好</p>
+                </div>
                 <div class="posts-grid">
                     <!-- 文章卡片1 -->
-                    <article class="post-card">
+                    <article class="post-card" data-category="技术">
+                        <div class="post-badge">热门</div>
                         <div class="post-image">
-                            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=400&fit=crop" alt="编程技术">
+                            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=400&fit=crop" alt="编程技术" loading="lazy">
+                            <div class="post-overlay"></div>
                         </div>
                         <div class="post-content">
                             <div class="post-meta">
-                                <span class="post-date">2024年1月15日</span>
-                                <span class="post-category">技术</span>
+                                <span class="post-date"><i class="far fa-calendar"></i> 2024年1月15日</span>
+                                <span class="post-read-time"><i class="far fa-clock"></i> 5分钟</span>
                             </div>
+                            <span class="post-category tech">技术</span>
                             <h3>现代Web开发技术栈详解</h3>
                             <p>深入探讨当前最流行的Web开发技术，包括React、Vue、Angular等前端框架的对比分析...</p>
+                            <div class="post-tags">
+                                <span class="mini-tag">JavaScript</span>
+                                <span class="mini-tag">React</span>
+                                <span class="mini-tag">Vue.js</span>
+                            </div>
                             <a href="post1.html" class="read-more">阅读更多 <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </article>
 
                     <!-- 文章卡片2 -->
-                    <article class="post-card">
+                    <article class="post-card" data-category="生活">
                         <div class="post-image">
-                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=400&fit=crop" alt="生活感悟">
+                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=400&fit=crop" alt="生活感悟" loading="lazy">
+                            <div class="post-overlay"></div>
                         </div>
                         <div class="post-content">
                             <div class="post-meta">
-                                <span class="post-date">2024年1月10日</span>
-                                <span class="post-category">生活</span>
+                                <span class="post-date"><i class="far fa-calendar"></i> 2024年1月10日</span>
+                                <span class="post-read-time"><i class="far fa-clock"></i> 3分钟</span>
                             </div>
+                            <span class="post-category life">生活</span>
                             <h3>山间徒步的思考</h3>
                             <p>在自然中寻找内心的平静，记录一次难忘的徒步旅行经历和对生活的感悟...</p>
+                            <div class="post-tags">
+                                <span class="mini-tag">旅行</span>
+                                <span class="mini-tag">生活感悟</span>
+                            </div>
                             <a href="post2.html" class="read-more">阅读更多 <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </article>
 
                     <!-- 文章卡片3 -->
-                    <article class="post-card">
+                    <article class="post-card" data-category="职场">
                         <div class="post-image">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=400&fit=crop" alt="职场心得">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=400&fit=crop" alt="职场心得" loading="lazy">
+                            <div class="post-overlay"></div>
                         </div>
                         <div class="post-content">
                             <div class="post-meta">
-                                <span class="post-date">2024年1月5日</span>
-                                <span class="post-category">职场</span>
+                                <span class="post-date"><i class="far fa-calendar"></i> 2024年1月5日</span>
+                                <span class="post-read-time"><i class="far fa-clock"></i> 7分钟</span>
                             </div>
+                            <span class="post-category career">职场</span>
                             <h3>程序员的职业发展规划</h3>
                             <p>从初级开发者到技术专家的成长路径，分享个人的职业发展经验和建议...</p>
+                            <div class="post-tags">
+                                <span class="mini-tag">职场心得</span>
+                                <span class="mini-tag">成长</span>
+                            </div>
                             <a href="post3.html" class="read-more">阅读更多 <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </article>
 
                     <!-- 文章卡片4 -->
-                    <article class="post-card">
+                    <article class="post-card" data-category="学习">
+                        <div class="post-badge new">新</div>
                         <div class="post-image">
-                            <img src="https://images.unsplash.com/photo-1516382799247-87df95d790b7?w=800&h=400&fit=crop" alt="学习笔记">
+                            <img src="https://images.unsplash.com/photo-1516382799247-87df95d790b7?w=800&h=400&fit=crop" alt="学习笔记" loading="lazy">
+                            <div class="post-overlay"></div>
                         </div>
                         <div class="post-content">
                             <div class="post-meta">
-                                <span class="post-date">2023年12月28日</span>
-                                <span class="post-category">学习</span>
+                                <span class="post-date"><i class="far fa-calendar"></i> 2023年12月28日</span>
+                                <span class="post-read-time"><i class="far fa-clock"></i> 10分钟</span>
                             </div>
+                            <span class="post-category study">学习</span>
                             <h3>机器学习入门指南</h3>
                             <p>从零开始学习机器学习，包括基础概念、常用算法和实践项目推荐...</p>
+                            <div class="post-tags">
+                                <span class="mini-tag">机器学习</span>
+                                <span class="mini-tag">Python</span>
+                            </div>
                             <a href="post4.html" class="read-more">阅读更多 <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </article>
@@ -119,43 +168,73 @@
             <aside class="sidebar">
                 <!-- 关于我 -->
                 <div id="about" class="widget about-widget">
+                    <div class="widget-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
                     <h3>关于我</h3>
                     <div class="profile">
-                        <img src="https://img.cdn1.vip/i/68d3b0e10d92f_1758703841.webp" alt="头像" class="profile-img">
+                        <div class="profile-img-wrapper">
+                            <img src="https://img.cdn1.vip/i/68d3b0e10d92f_1758703841.webp" alt="头像" class="profile-img">
+                            <div class="profile-status"></div>
+                        </div>
                         <p>你好！我是一名热爱技术的开发者，喜欢分享编程经验和生活感悟。在这里记录我的学习成长历程。</p>
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <i class="fas fa-book"></i>
+                                <span>24篇文章</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-eye"></i>
+                                <span>10k+浏览</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 热门标签 -->
                 <div class="widget tags-widget">
+                    <div class="widget-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
                     <h3>热门标签</h3>
+                    <div class="filter-info">点击标签筛选文章</div>
                     <div class="tags">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">React</span>
-                        <span class="tag">Vue.js</span>
-                        <span class="tag">Node.js</span>
-                        <span class="tag">Python</span>
-                        <span class="tag">机器学习</span>
-                        <span class="tag">生活感悟</span>
-                        <span class="tag">职场心得</span>
+                        <span class="tag" data-filter="all">
+                            <i class="fas fa-th"></i> 全部
+                        </span>
+                        <span class="tag" data-filter="JavaScript">JavaScript</span>
+                        <span class="tag" data-filter="React">React</span>
+                        <span class="tag" data-filter="Vue.js">Vue.js</span>
+                        <span class="tag" data-filter="Node.js">Node.js</span>
+                        <span class="tag" data-filter="Python">Python</span>
+                        <span class="tag" data-filter="机器学习">机器学习</span>
+                        <span class="tag" data-filter="生活感悟">生活感悟</span>
+                        <span class="tag" data-filter="职场心得">职场心得</span>
                     </div>
                 </div>
 
                 <!-- 联系方式 -->
                 <div id="contact" class="widget contact-widget">
+                    <div class="widget-icon">
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
                     <h3>联系我</h3>
                     <div class="social-links">
-                        <a href="#" class="social-link">
-                            <i class="fab fa-github"></i> GitHub
+                        <a href="#" class="social-link github">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
                         </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-twitter"></i> Twitter
+                        <a href="#" class="social-link twitter">
+                            <i class="fab fa-twitter"></i>
+                            <span>Twitter</span>
                         </a>
-                        <a href="#" class="social-link">
-                            <i class="fas fa-envelope"></i> Email
+                        <a href="#" class="social-link email">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email</span>
                         </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-linkedin"></i> LinkedIn
+                        <a href="#" class="social-link linkedin">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
                         </a>
                     </div>
                 </div>
@@ -166,10 +245,31 @@
     <!-- 页脚 -->
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2024 我的个人博客. 保留所有权利.</p>
-            <p>用心记录，用爱分享</p>
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <i class="fas fa-feather-alt"></i>
+                    <h3>我的博客</h3>
+                </div>
+                <div class="footer-links">
+                    <a href="#home"><i class="fas fa-home"></i> 首页</a>
+                    <a href="#about"><i class="fas fa-user"></i> 关于</a>
+                    <a href="#contact"><i class="fas fa-envelope"></i> 联系</a>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 我的个人博客. 保留所有权利.</p>
+                <p class="footer-tagline">
+                    <i class="fas fa-heart"></i> 用心记录，用爱分享
+                </p>
+            </div>
         </div>
     </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="script.js"></script>
 </body>

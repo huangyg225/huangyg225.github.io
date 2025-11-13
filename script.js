@@ -1,109 +1,223 @@
-// 移动端导航菜单切换
 document.addEventListener('DOMContentLoaded', function() {
+    initNavigation();
+    initScrollProgress();
+    initBackToTop();
+    initSmoothScroll();
+    initCTAButtons();
+    initCardAnimations();
+    initTagFiltering();
+    initHeroAnimation();
+});
+
+function initNavigation() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     
-    hamburger.addEventListener('click', function() {
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('active');
-    });
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }));
+    }
     
-    // 点击导航链接时关闭菜单
-    document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-    }));
-});
-
-// 平滑滚动
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 30px rgba(0,0,0,0.15)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)';
+            }
         }
     });
-});
+}
 
-// CTA按钮点击事件
-document.querySelector('.cta-button').addEventListener('click', function() {
-    document.querySelector('.blog-posts').scrollIntoView({
-        behavior: 'smooth'
-    });
-});
-
-// 导航栏滚动效果
-window.addEventListener('scroll', function() {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-        navbar.style.backdropFilter = 'blur(10px)';
-    } else {
-        navbar.style.background = '#fff';
-        navbar.style.backdropFilter = 'none';
+function initScrollProgress() {
+    const progressBar = document.querySelector('.scroll-progress');
+    
+    if (progressBar) {
+        window.addEventListener('scroll', function() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            progressBar.style.width = scrolled + '%';
+        });
     }
-});
+}
 
-// 文章卡片动画
-const observeCards = () => {
-    const cards = document.querySelectorAll('.post-card');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+function initBackToTop() {
+    const backToTopBtn = document.getElementById('backToTop');
+    
+    if (backToTopBtn) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
             }
         });
-    }, { threshold: 0.1 });
-    
-    cards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(card);
-    });
-};
-
-// 标签点击效果
-document.querySelectorAll('.tag').forEach(tag => {
-    tag.addEventListener('click', function() {
-        // 移除其他标签的激活状态
-        document.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
-        // 添加当前标签的激活状态
-        this.classList.add('active');
         
-        // 这里可以添加筛选文章的逻辑
-        console.log('选中标签:', this.textContent);
-    });
-});
-
-// 页面加载完成后初始化动画
-window.addEventListener('load', function() {
-    observeCards();
-    
-    // 英雄区域文字动画
-    const heroContent = document.querySelector('.hero-content');
-    heroContent.style.opacity = '0';
-    heroContent.style.transform = 'translateY(30px)';
-    
-    setTimeout(() => {
-        heroContent.style.transition = 'opacity 1s ease, transform 1s ease';
-        heroContent.style.opacity = '1';
-        heroContent.style.transform = 'translateY(0)';
-    }, 200);
-});
-
-// 添加CSS类用于标签激活状态
-const style = document.createElement('style');
-style.textContent = `
-    .tag.active {
-        background: #3498db !important;
-        color: white !important;
-        transform: translateY(-2px) !important;
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
     }
-`;
-document.head.appendChild(style);
+}
+
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const offset = 70;
+                const targetPosition = target.offsetTop - offset;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+function initCTAButtons() {
+    const primaryCTA = document.querySelector('.cta-button.primary');
+    const secondaryCTA = document.querySelector('.cta-button.secondary');
+    
+    if (primaryCTA) {
+        primaryCTA.addEventListener('click', function() {
+            const blogPosts = document.querySelector('.blog-posts');
+            if (blogPosts) {
+                blogPosts.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    }
+    
+    if (secondaryCTA) {
+        secondaryCTA.addEventListener('click', function() {
+            const about = document.getElementById('about');
+            if (about) {
+                about.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            }
+        });
+    }
+}
+
+function initCardAnimations() {
+    const observeCards = () => {
+        const cards = document.querySelectorAll('.post-card');
+        const widgets = document.querySelectorAll('.widget');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { 
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        [...cards, ...widgets].forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(element);
+        });
+    };
+    
+    observeCards();
+}
+
+function initTagFiltering() {
+    const tags = document.querySelectorAll('.tag[data-filter]');
+    const postCards = document.querySelectorAll('.post-card');
+    
+    if (tags.length > 0 && postCards.length > 0) {
+        tags.forEach(tag => {
+            tag.addEventListener('click', function() {
+                const filterValue = this.getAttribute('data-filter');
+                
+                tags.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                postCards.forEach(card => {
+                    card.style.transition = 'all 0.5s ease';
+                    
+                    if (filterValue === 'all') {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0) scale(1)';
+                        }, 10);
+                    } else {
+                        const cardTags = Array.from(card.querySelectorAll('.mini-tag')).map(t => t.textContent);
+                        const cardCategory = card.getAttribute('data-category');
+                        
+                        if (cardTags.includes(filterValue) || cardCategory === filterValue) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0) scale(1)';
+                            }, 10);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px) scale(0.95)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 500);
+                        }
+                    }
+                });
+                
+                const blogPosts = document.querySelector('.blog-posts');
+                if (blogPosts) {
+                    blogPosts.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        const allTag = document.querySelector('.tag[data-filter="all"]');
+        if (allTag) {
+            allTag.classList.add('active');
+        }
+    }
+}
+
+function initHeroAnimation() {
+    window.addEventListener('load', function() {
+        const heroContent = document.querySelector('.hero-content');
+        if (heroContent) {
+            heroContent.style.opacity = '1';
+        }
+    });
+}
+
+if (typeof window !== 'undefined' && !window.observeCardsInitialized) {
+    window.observeCardsInitialized = true;
+}
