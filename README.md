@@ -67,7 +67,7 @@ Guang 是一个以探索为核心的网站，通过前沿技术、沉浸式体�
 
 - **官网**: [Guang](https://asstar-x.github.io/)
 - **邮箱**: yxy138646@gmail.com
-- **社区**: WX：GitscYee
+- **社区**: WX：hyg225
 ![社区群](./assets/images/AI_group.jpg) 
 ![作者](./assets/images/Author.jpg) 
 - **反馈**: 在 GitHub Issues 中提交建议或想法
